@@ -3,6 +3,7 @@ import gym
 import numpy as np
 import random
 import matplotlib.pyplot as plt
+import pickle # for exporting and importing datastructure files
 
 # Initialize the Taxi Environment
 env = gym.make("Taxi-v2").env
@@ -125,3 +126,6 @@ train(100000, alpha, gamma, epsilon, True)
 times, penalties = evaluate(100, True)
 plot_timesteps_histogram(times)
 plot_penalties_histogram(penalties)
+
+# Export the learned Q-Table for external use
+pickle.dump(q_table, open("q_table.p", "wb"))
